@@ -2,16 +2,31 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROMAN TEST SITE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ROMAN TEST SITE">
     <meta name="author" content="ROMAN TEST SITE">
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-messaging.js"></script>
+    <script type="text/javascript" src="/ak-push.js"></script>
+    <link rel="manifest" href="/manifest.json"></link>
 </head>
 
 <body>
-<h1>Мой главный заголовок</h1>
-<h2>Мой заголовок верхнего уровня</h2>
-<h3>Мой подзаголовок</h3>
-<h4>Мой под-подзаголовок</h4>
+<div class="container">
+    <h1>Добро пожаловать!</h1>
+    <p>PUSH-уведомление:</p>
+    <input type="text" id="nameInput" placeholder="Ваше имя">
+
+    <!-- Кнопка подписки -->
+    <button type="button" id="init_sub">PUSH - подписка</button>
+
+    <script>
+        document.getElementById('init_sub').addEventListener('click', () => {
+            new AKPush().initSubscription({ email: document.getElementById('nameInput').value.trim()+'_ex@example.com' })
+        });
+    </script>
+</div>
 </body>
 </html>

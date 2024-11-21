@@ -1,0 +1,5 @@
+{
+  "permissions": [ "activeTab" ],
+  "name": "https://romanutolin.github.io/test_site",
+  "display": "standalone"
+}
