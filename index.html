@@ -71,14 +71,16 @@
             const email = document.getElementById('nameInput').value.trim() + '_ex@example.com';
             new AKPush().initSubscription({email: email})
 
-            //Отправляем в ga4
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
+            const payload = {
                 event: 'push_subscribe',
                 email: email
-            });
+            }
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(payload);
             <!--TODO: Печать в консольку  -->
-            console.log("push_subscribe ", email);
+            console.log(payload);
 
         });
     </script>
@@ -119,7 +121,7 @@
 
     <script>
         function sent_ga4(event) {
-            const payload = {
+            const offers_event = {
                 currency: "RUB",
                 session_id: document.getElementById("session_id").value.trim(),
                 client_id: document.getElementById("client_id").value.trim(),
@@ -132,14 +134,16 @@
                     }
                 ]
             };
+
+            const payload = {
+                event: event,
+                ecommerce: offers_event
+            }
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                event: 'push_subscribe',
-                ecommerce: payload
-            });
+            window.dataLayer.push(payload);
             <!--TODO: Печать в консольку  -->
-            console.log(event, "  ", payload);
+            console.log(payload);
         }
     </script>
 
