@@ -17,7 +17,10 @@
 
         try {
             fetch(endpoint, {
-                method: 'POST', headers: {'Content-Type': 'application/json'}, body: payload, keepalive: true,
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"},
+                body: payload,
+                keepalive: true,
             }).catch(function (err) {
                 console.log(err)
             });
