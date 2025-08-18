@@ -63,11 +63,14 @@
     </script>
 </div>
 
-<div class="container">
-    <p>Действия с товарами:</p>
-    <!-- id товара -->
-    <input type="text" id="offer_id" placeholder="Id товара">
 
+<p>Действия с товарами:</p>
+
+<!-- id товара -->
+<input type="text" id="offer_id" placeholder="Id товара">
+
+<div class="container">
+    <p>Избранное:</p>
     <!-- Кнопки -->
     <button type="button" id="add_to_wishlist">Добавить в избранное</button>
     <button type="button" id="remove_from_wishlist">Удалить из избранного</button>
@@ -103,6 +106,42 @@
     </script>
 </div>
 
+<div class="container">
+    <p>Корзина:</p>
+    <!-- Кнопки -->
+    <button type="button" id="add_to_cart">Добавить в корзину</button>
+    <button type="button" id="remove_from_cart">Удалить из корзины</button>
+
+    <script>
+        document.getElementById('add_to_cart').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'offers_like',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("add_to_cart ", offerId);
+
+        });
+
+        document.getElementById('remove_from_cart').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'offers_like',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("remove_from_cart ", offerId);
+
+        });
+    </script>
+</div>
 
 </body>
 </html>
