@@ -38,9 +38,10 @@
         return window.dataLayer;
     })();
 
-
+    //Перехватчик
     try {
         let originalPush = dl.push;
+        console.log(originalPush);
         dl.push = function () {
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
@@ -52,8 +53,10 @@
         console.log(err)
     }
 
+    //Перехватчик
     try {
         let originalGtag = window.gtag;
+        console.log(originalGtag);
         window.gtag = function () {
             let args = Array.prototype.slice.call(arguments);
 
