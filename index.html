@@ -52,6 +52,13 @@
             const email = document.getElementById('nameInput').value.trim() + '_ex@example.com';
             new AKPush().initSubscription({email: email})
 
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'push_subscribe',
+                email: email
+            });
+
         });
     </script>
 </div>
