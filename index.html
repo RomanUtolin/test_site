@@ -8,27 +8,21 @@
     <meta name="description" content="ROMAN TEST SITE">
     <meta name="author" content="ROMAN TEST SITE">
 
-    <!-- GA4: вставьте свой Measurement ID -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JPVF25WTR1"></script>
-    <script>
-        // Конфиденциальность (опционально, базовый Consent Mode V2)
-        // Установите нужные вам дефолты до загрузки GA
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
-        // При желании включите debug: gtag('config', 'G-XXXXXXXXXX', { 'debug_mode': true });
-        gtag('consent', 'default', {
-            'ad_user_data': 'granted',
-            'ad_personalization': 'granted',
-            'ad_storage': 'granted',
-            'analytics_storage': 'granted'   // измерение работает, реклама — отключена
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start':
+                new Date().getTime(), event: 'gtm.js'
         });
-        gtag('js', new Date());
-        gtag('config', 'G-JPVF25WTR1');
-    </script>
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-P33K754W');</script>
+    <!-- End Google Tag Manager -->
 
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-messaging.js"></script>
@@ -37,6 +31,14 @@
 </head>
 
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P33K754W"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <div class="container">
     <h1>Добро пожаловать!</h1>
     <p>PUSH-уведомление:</p>
@@ -50,16 +52,6 @@
             const email = document.getElementById('nameInput').value.trim() + '_ex@example.com';
             new AKPush().initSubscription({email: email})
 
-            // GA4 событие о клике/подписке
-            // event_name: 'push_subscribed' (кастомное), параметры — по вашему ТЗ
-            gtag('event', 'push_subscribed', {
-                event_category: 'push',
-                event_label: 'init_subscription_click',
-                email: email,            // хранить email в аналитике обычно не рекомендуется (PII).
-                                         // Лучше хэш (SHA256) или вовсе убрать поле, если политиками запрещено.
-                // пример безопаснее:
-                // email_sha256: sha256(email) // если заранее хэшируете на бэке/в коде
-            });
         });
     </script>
 </div>
