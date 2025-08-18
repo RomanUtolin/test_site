@@ -82,7 +82,7 @@
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: 'offers_like',
+                event: 'add_to_wishlist',
                 email: offerId
             });
             <!--TODO: Печать в консольку  -->
@@ -96,7 +96,7 @@
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: 'offers_like',
+                event: 'remove_from_wishlist',
                 email: offerId
             });
             <!--TODO: Печать в консольку  -->
@@ -104,9 +104,7 @@
 
         });
     </script>
-</div>
 
-<div class="container">
     <p>Корзина:</p>
     <!-- Кнопки -->
     <button type="button" id="add_to_cart">Добавить в корзину</button>
@@ -119,7 +117,7 @@
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: 'offers_like',
+                event: 'add_to_cart',
                 email: offerId
             });
             <!--TODO: Печать в консольку  -->
@@ -133,7 +131,7 @@
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
-                event: 'offers_like',
+                event: 'remove_from_cart',
                 email: offerId
             });
             <!--TODO: Печать в консольку  -->
@@ -141,6 +139,63 @@
 
         });
     </script>
+
+    <p>Заказы:</p>
+    <!-- Кнопки -->
+    <button type="button" id="purchase">Покупка</button>
+    <button type="button" id="return">Возват</button>
+
+    <script>
+        document.getElementById('purchase').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'purchase',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("purchase ", offerId);
+
+        });
+
+        document.getElementById('return').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'return',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("return ", offerId);
+
+        });
+    </script>
+
+    <p>Просмотры и клики:</p>
+    <!-- Кнопки -->
+    <button type="button" id="view_item">Просмотр товара</button>
+
+    <script>
+        document.getElementById('view_item').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'view_item',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("view_item ", offerId);
+
+        });
+
+    </script>
+
 </div>
 
 </body>
