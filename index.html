@@ -136,7 +136,7 @@
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 event: 'push_subscribe',
-                items: payload
+                ecommerce: payload
             });
             <!--TODO: Печать в консольку  -->
             console.log(event, "  ", payload);
@@ -203,7 +203,6 @@
         document.getElementById('view_item').addEventListener('click', () => {
             //Отправляем в ga4
             sent_ga4('view_item');
-
         });
 
     </script>
