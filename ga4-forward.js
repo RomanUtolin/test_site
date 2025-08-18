@@ -4,6 +4,8 @@
     const endpoint = 'http://127.0.0.1:8888/events/event';
 
     function postPayload(payload) {
+        let str_payload = JSON.stringify(payload);
+        console.log(str_payload)
 
         // if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
         //     try {
@@ -18,14 +20,14 @@
         try {
             fetch(endpoint, {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*"},
-                body: payload,
+                headers: {'Content-Type': 'application/json'},
+                body: str_payload,
                 keepalive: true,
             }).catch(function (err) {
-                console.log(err)
+                console.log(err);
             });
         } catch (err) {
-            console.log(err)
+            console.log(err);
         }
     }
 
@@ -44,7 +46,6 @@
     //Перехватчик
     try {
         let originalPush = dl.push;
-        console.log(originalPush);
         dl.push = function () {
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
@@ -59,7 +60,6 @@
     //Перехватчик
     try {
         let originalGtag = window.gtag;
-        console.log(originalGtag)
         window.gtag = function () {
             let args = Array.prototype.slice.call(arguments);
 
