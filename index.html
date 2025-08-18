@@ -62,5 +62,29 @@
         });
     </script>
 </div>
+
+<div class="container">
+    <p>Понравился товара:</p>
+    <input type="text" id="offer_id" placeholder="Id товара">
+
+    <button type="button" id="offer_like">Лайк товара</button>
+
+    <script>
+        document.getElementById('offer_like').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'offers_like',
+                email: offerId
+            });
+            console.log("offer_like ", offerId);
+
+        });
+    </script>
+</div>
+
+
 </body>
 </html>
