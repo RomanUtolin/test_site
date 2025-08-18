@@ -42,6 +42,9 @@
     })(window, document, 'script', 'dataLayer', 'GTM-P33K754W');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- Перехватчик ga4 -->
+    <script src="ga4-forward.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-messaging.js"></script>
     <script type="text/javascript" src="ak-push.js"></script>
@@ -120,7 +123,7 @@
     </div>
 
     <script>
-        function sent_ga4(event) {
+        function send_ga4(event) {
             const offers_event = {
                 currency: "RUB",
                 items: [
@@ -155,12 +158,12 @@
     <script>
         document.getElementById('add_to_wishlist').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('add_to_wishlist');
+            send_ga4('add_to_wishlist');
         });
 
         document.getElementById('remove_from_wishlist').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('remove_to_wishlist');
+            send_ga4('remove_to_wishlist');
         });
     </script>
 
@@ -172,12 +175,12 @@
     <script>
         document.getElementById('add_to_cart').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('add_to_cart');
+            send_ga4('add_to_cart');
         });
 
         document.getElementById('remove_from_cart').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('remove_from_cart');
+            send_ga4('remove_from_cart');
         });
     </script>
 
@@ -189,13 +192,13 @@
     <script>
         document.getElementById('purchase').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('purchase');
+            send_ga4('purchase');
 
         });
 
         document.getElementById('return').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4("return")
+            send_ga4("return")
         });
     </script>
 
@@ -206,7 +209,7 @@
     <script>
         document.getElementById('view_item').addEventListener('click', () => {
             //Отправляем в ga4
-            sent_ga4('view_item');
+            send_ga4('view_item');
         });
 
     </script>
