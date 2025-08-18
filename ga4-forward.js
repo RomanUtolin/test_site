@@ -9,10 +9,7 @@
 
         try {
             fetch(endpoint, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: str_payload,
-                keepalive: true,
+                method: 'POST', headers: {'Content-Type': 'application/json'}, body: str_payload, keepalive: true,
             }).catch(function (err) {
                 console.log(err);
             });
@@ -37,6 +34,7 @@
     try {
         let originalPush = dl.push;
         dl.push = function () {
+            console.log("use dl.push")
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
                 handleDataLayerItem(args[i]);
@@ -51,6 +49,7 @@
     try {
         let originalGtag = window.gtag;
         window.gtag = function () {
+            console.log("use window.gtag")
             let args = Array.prototype.slice.call(arguments);
 
             if (args[0] === 'event') {
