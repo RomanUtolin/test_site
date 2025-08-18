@@ -7,16 +7,6 @@
         let str_payload = JSON.stringify(payload)
         console.log(str_payload)
 
-        // if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
-        //     try {
-        //         let blob = new Blob([payload], {type: 'application/json'});
-        //         let ok = navigator.sendBeacon(endpoint, blob);
-        //         if (ok) return;
-        //     } catch (err) {
-        //         console.log(err)
-        //     }
-        // }
-
         try {
             fetch(endpoint, {
                 method: 'POST',
