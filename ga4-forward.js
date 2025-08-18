@@ -4,7 +4,7 @@
     const endpoint = 'http://127.0.0.1:8888/events/event';
 
     function postPayload(payload) {
-        let str_payload = JSON.stringify(payload);
+        let str_payload = JSON.stringify(payload)
         console.log(str_payload)
 
         // if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
