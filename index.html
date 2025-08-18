@@ -91,10 +91,20 @@
 
 <div class="container">
     <p>Действия с товарами:</p>
-    <!-- id товара -->
+
     <div>
-        <label for="session_id">session_id: </label>
-        <input type="text" id="session_id" value="f48a41ae-9ca4-4ee9-b4a1-0b92a2c351c5" placeholder="id сессии">
+        <label for="event_time">session_id: </label>
+        <input type="text" id="event_time" value=0 placeholder="Время события">
+    </div>
+
+    <div>
+        <label for="transaction_id">session_id: </label>
+        <input type="text" id="transaction_id" placeholder="id транзакции">
+    </div>
+
+    <div>
+        <label for="session_uid">session_id: </label>
+        <input type="text" id="session_uid" value="f48a41ae-9ca4-4ee9-b4a1-0b92a2c351c5" placeholder="id сессии">
     </div>
 
     <div>
@@ -126,6 +136,7 @@
         function send_ga4(event) {
             const offers_event = {
                 currency: "RUB",
+                transaction_id: document.getElementById("transaction_id").value.trim(),
                 items: [
                     {
                         item_id: document.getElementById("offer_id").value.trim(),
@@ -139,7 +150,7 @@
             const payload = {
                 event: event,
                 ecommerce: offers_event,
-                session_id: document.getElementById("session_id").value.trim(),
+                session_id: document.getElementById("session_uid").value.trim(),
                 client_id: document.getElementById("client_id").value.trim(),
             }
             //Отправляем в ga4
