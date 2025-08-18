@@ -34,9 +34,9 @@
     try {
         let originalPush = dl.push;
         dl.push = function () {
-            console.log("use dl.push")
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
+                console.log("use dl.push");
                 handleDataLayerItem(args[i]);
             }
             return originalPush.apply(dl, args);
@@ -49,12 +49,12 @@
     try {
         let originalGtag = window.gtag;
         window.gtag = function () {
-            console.log("use window.gtag")
             let args = Array.prototype.slice.call(arguments);
 
             if (args[0] === 'event') {
                 let eventName = args[1];
                 let params = args[2] || {};
+                console.log("use window.gtag");
                 handleDataLayerItem(Object.assign({event: eventName}, params));
             }
             if (typeof originalGtag === 'function') {
