@@ -123,8 +123,6 @@
         function sent_ga4(event) {
             const offers_event = {
                 currency: "RUB",
-                session_id: document.getElementById("session_id").value.trim(),
-                client_id: document.getElementById("client_id").value.trim(),
                 items: [
                     {
                         item_id: document.getElementById("offer_id").value.trim(),
@@ -137,7 +135,9 @@
 
             const payload = {
                 event: event,
-                ecommerce: offers_event
+                ecommerce: offers_event,
+                session_id: document.getElementById("session_id").value.trim(),
+                client_id: document.getElementById("client_id").value.trim(),
             }
             //Отправляем в ga4
             window.dataLayer = window.dataLayer || [];
