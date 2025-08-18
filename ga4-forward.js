@@ -5,15 +5,15 @@
 
     function postPayload(payload) {
 
-        if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
-            try {
-                let blob = new Blob([payload], {type: 'application/json'});
-                let ok = navigator.sendBeacon(endpoint, blob);
-                if (ok) return;
-            } catch (err) {
-                console.log(err)
-            }
-        }
+        // if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+        //     try {
+        //         let blob = new Blob([payload], {type: 'application/json'});
+        //         let ok = navigator.sendBeacon(endpoint, blob);
+        //         if (ok) return;
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        // }
 
         try {
             fetch(endpoint, {
@@ -56,7 +56,7 @@
     //Перехватчик
     try {
         let originalGtag = window.gtag;
-        console.log(originalGtag);
+        console.log(originalGtag)
         window.gtag = function () {
             let args = Array.prototype.slice.call(arguments);
 
