@@ -64,13 +64,16 @@
 </div>
 
 <div class="container">
-    <p>Понравился товара:</p>
+    <p>Действия с товарами:</p>
+    <!-- id товара -->
     <input type="text" id="offer_id" placeholder="Id товара">
 
-    <button type="button" id="offer_like">Лайк товара</button>
+    <!-- Кнопки -->
+    <button type="button" id="add_to_wishlist">Добавить в избранное</button>
+    <button type="button" id="remove_from_wishlist">Удалить из избранного</button>
 
     <script>
-        document.getElementById('offer_like').addEventListener('click', () => {
+        document.getElementById('add_to_wishlist').addEventListener('click', () => {
             const offerId = document.getElementById('offer_id').value.trim();
 
             //Отправляем в ga4
@@ -79,7 +82,22 @@
                 event: 'offers_like',
                 email: offerId
             });
-            console.log("offer_like ", offerId);
+            <!--TODO: Печать в консольку  -->
+            console.log("add_to_wishlist ", offerId);
+
+        });
+
+        document.getElementById('remove_from_wishlist').addEventListener('click', () => {
+            const offerId = document.getElementById('offer_id').value.trim();
+
+            //Отправляем в ga4
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                event: 'offers_like',
+                email: offerId
+            });
+            <!--TODO: Печать в консольку  -->
+            console.log("remove_from_wishlist ", offerId);
 
         });
     </script>
