@@ -36,7 +36,11 @@
         dl.push = function () {
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
+                console.log("###############")
                 console.log("use dl.push");
+                console.log(args)
+                console.log(args[i])
+                console.log("###############")
                 handleDataLayerItem(args[i]);
             }
             return originalPush.apply(dl, args);
