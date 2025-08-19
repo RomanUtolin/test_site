@@ -80,6 +80,9 @@
 
 <h1>Добро пожаловать!</h1>
 
+<label for="use_ga4">Имя: </label><input type="text" id="use_ga4" value="0" placeholder="Отправлять в ga4? (1 или 0)">
+<label for="use_altcraft">Имя: </label><input type="text" id="use_altcraft" value="0" placeholder="Отправлять в Altcraft? (1 или 0)">
+
 <div class="container">
     <p>PUSH-уведомление:</p>
     <label for="nameInput">Имя: </label><input type="text" id="nameInput" placeholder="Имя">
@@ -97,18 +100,21 @@
                 email: email
             }
 
-            //Отправляем в ga4
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(payload);
-            <!--TODO: Печать в консольку  -->
-            console.log("sent ga4", payload);
+            if (parseInt(document.getElementById('use_ga4').value.trim) > 0) {
+                //Отправляем в ga4
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent ga4", payload);
+            }
 
-            //Отправляем в altcraft
-            window.acDataLayer = window.acDataLayer || [];
-            window.acDataLayer.push(payload);
-            <!--TODO: Печать в консольку  -->
-            console.log("sent altcraft", payload);
-
+            if (parseInt(document.getElementById('use_altcraft').value.trim) > 0) {
+                //Отправляем в altcraft
+                window.acDataLayer = window.acDataLayer || [];
+                window.acDataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent altcraft", payload);
+            }
         });
     </script>
 </div>
@@ -157,7 +163,7 @@
     </div>
 
     <script>
-        function send_ga4(event) {
+        function send_event(event) {
             const offers_event = {
                 currency: "RUB",
                 transaction_id: document.getElementById("transaction_id").value.trim(),
@@ -178,17 +184,22 @@
                 client_id: document.getElementById("client_id").value.trim(),
                 event_time: parseInt(document.getElementById("event_time").value.trim()),
             }
-            //Отправляем в ga4
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(payload);
-            <!--TODO: Печать в консольку  -->
-            console.log("sent ga4", payload);
 
-            //Отправляем в altcraft
-            window.acDataLayer = window.acDataLayer || [];
-            window.acDataLayer.push(payload);
-            <!--TODO: Печать в консольку  -->
-            console.log("sent altcraft", payload);
+            if (parseInt(document.getElementById('use_ga4').value.trim) > 0) {
+                //Отправляем в ga4
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent ga4", payload);
+            }
+
+            if (parseInt(document.getElementById('use_altcraft').value.trim) > 0) {
+                //Отправляем в altcraft
+                window.acDataLayer = window.acDataLayer || [];
+                window.acDataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent altcraft", payload);
+            }
         }
     </script>
 
@@ -200,12 +211,12 @@
     <script>
         document.getElementById('add_to_wishlist').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('add_to_wishlist');
+            send_event('add_to_wishlist');
         });
 
         document.getElementById('remove_from_wishlist').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('remove_from_wishlist');
+            send_event('remove_from_wishlist');
         });
     </script>
 
@@ -217,12 +228,12 @@
     <script>
         document.getElementById('add_to_cart').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('add_to_cart');
+            send_event('add_to_cart');
         });
 
         document.getElementById('remove_from_cart').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('remove_from_cart');
+            send_event('remove_from_cart');
         });
     </script>
 
@@ -234,13 +245,13 @@
     <script>
         document.getElementById('purchase').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('purchase');
+            send_event('purchase');
 
         });
 
         document.getElementById('return').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4("return")
+            send_event("return")
         });
     </script>
 
@@ -251,7 +262,7 @@
     <script>
         document.getElementById('view_item').addEventListener('click', () => {
             //Отправляем в ga4
-            send_ga4('view_item');
+            send_event('view_item');
         });
 
     </script>
