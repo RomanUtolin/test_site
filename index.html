@@ -107,7 +107,7 @@
                 email: email
             }
 
-            if (parseInt(document.getElementById('use_ga4').value.trim) > 0) {
+            if (parseInt(document.getElementById('use_ga4').value.trim()) === 0) {
                 //Отправляем в ga4
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(payload);
@@ -115,7 +115,7 @@
                 console.log("sent ga4", payload);
             }
 
-            if (parseInt(document.getElementById('use_altcraft').value.trim) > 0) {
+            if (parseInt(document.getElementById('use_altcraft').value.trim()) === 1) {
                 //Отправляем в altcraft
                 window.acDataLayer = window.acDataLayer || [];
                 window.acDataLayer.push(payload);
@@ -192,7 +192,7 @@
                 event_time: parseInt(document.getElementById("event_time").value.trim()),
             }
 
-            if (parseInt(document.getElementById('use_ga4').value.trim) > 0) {
+            if (parseInt(document.getElementById('use_ga4').value.trim()) === 0) {
                 //Отправляем в ga4
                 window.dataLayer = window.dataLayer || [];
                 window.dataLayer.push(payload);
@@ -200,7 +200,7 @@
                 console.log("sent ga4", payload);
             }
 
-            if (parseInt(document.getElementById('use_altcraft').value.trim) > 0) {
+            if (parseInt(document.getElementById('use_altcraft').value.trim()) === 0) {
                 //Отправляем в altcraft
                 window.acDataLayer = window.acDataLayer || [];
                 window.acDataLayer.push(payload);
