@@ -28,29 +28,28 @@
         }
     }
 
-    //window.acDataLayer
-    let dl = (function ensureDataLayer() {
+    //Перехватчик GA4
+    let ga4dl = (function ensureDataLayer() {
         if (typeof window === 'undefined') return [];
         window.dataLayer = window.dataLayer || [];
         return window.dataLayer;
     })();
 
-    //Перехватчик
+    //
     try {
-        let originalPush = dl.push;
-        dl.push = function () {
+        let originalPush = ga4dl.push;
+        ga4dl.push = function () {
             let args = Array.prototype.slice.call(arguments);
             for (let i = 0; i < args.length; i++) {
-                console.log("use dl.push");
+                console.log("use ga4dl.push");
                 postPayload(args[i]);
             }
-            return originalPush.apply(dl, args);
+            return originalPush.apply(ga4dl, args);
         };
     } catch (err) {
         console.log(err)
     }
-
-    //Перехватчик
+    //
     try {
         let originalGtag = window.gtag;
         window.gtag = function () {
@@ -65,6 +64,28 @@
             if (typeof originalGtag === 'function') {
                 return originalGtag.apply(this, arguments);
             }
+        };
+    } catch (err) {
+        console.log(err)
+    }
+
+    //Перехватчик altcraft контейнера
+    let acdl = (function ensureDataLayer() {
+        if (typeof window === 'undefined') return [];
+        window.acDataLayer = window.acDataLayer || [];
+        return window.acDataLayer;
+    })();
+
+    //Перехватчик
+    try {
+        let originalPush = acdl.push;
+        acdl.push = function () {
+            let args = Array.prototype.slice.call(arguments);
+            for (let i = 0; i < args.length; i++) {
+                console.log("use acdl.push");
+                postPayload(args[i]);
+            }
+            return originalPush.apply(acdl, args);
         };
     } catch (err) {
         console.log(err)
