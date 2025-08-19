@@ -28,11 +28,12 @@
         }
     }
 
-    let dl = (function ensureDataLayer() {
-        if (typeof window === 'undefined') return [];
-        window.dataLayer = window.dataLayer || [];
-        return window.dataLayer;
-    })();
+    //window.acDataLayer
+    // let dl = (function ensureDataLayer() {
+    //     if (typeof window === 'undefined') return [];
+    //     window.dataLayer = window.dataLayer || [];
+    //     return window.dataLayer;
+    // })();
 
     //Перехватчик
     try {
