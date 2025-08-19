@@ -46,7 +46,7 @@
     <script>
         (function (window, document, dataLayerName, containerID) {
             window[dataLayerName] = window[dataLayerName] || [];
-            window[dataLayerName].push({ 'start': new Date().getTime(), event: 'actm-js' });
+            window[dataLayerName].push({'start': new Date().getTime(), event: 'actm-js'});
             let firstScript = document.getElementsByTagName('script')[0];
             let script = document.createElement('script');
             let dl = dataLayerName !== 'acDataLayer' ? '&l=' + dataLayerName : '';
@@ -101,7 +101,13 @@
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push(payload);
             <!--TODO: Печать в консольку  -->
-            console.log(payload);
+            console.log("sent ga4", payload);
+
+            //Отправляем в altcraft
+            window.acDataLayer = window.acDataLayer || [];
+            window.acDataLayer.push(payload);
+            <!--TODO: Печать в консольку  -->
+            console.log("sent altcraft", payload);
 
         });
     </script>
@@ -176,7 +182,14 @@
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push(payload);
             <!--TODO: Печать в консольку  -->
+            console.log("sent ga4", payload);
             console.log(payload);
+
+            //Отправляем в altcraft
+            window.acDataLayer = window.acDataLayer || [];
+            window.acDataLayer.push(payload);
+            <!--TODO: Печать в консольку  -->
+            console.log("sent altcraft", payload);
         }
     </script>
 
