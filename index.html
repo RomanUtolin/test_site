@@ -47,9 +47,9 @@
         (function (window, document, dataLayerName, containerID) {
             window[dataLayerName] = window[dataLayerName] || [];
             window[dataLayerName].push({ 'start': new Date().getTime(), event: 'actm-js' });
-            var firstScript = document.getElementsByTagName('script')[0];
-            var script = document.createElement('script');
-            var dl = dataLayerName !== 'acDataLayer' ? '&l=' + dataLayerName : '';
+            let firstScript = document.getElementsByTagName('script')[0];
+            let script = document.createElement('script');
+            let dl = dataLayerName !== 'acDataLayer' ? '&l=' + dataLayerName : '';
             script.async = true;
             script.src = 'https://pxl-m5xxwmy9v8zuehjy.dev.altcraft.com/actm/js/actm.js?id=' + containerID + dl;
             script.type = 'module';
