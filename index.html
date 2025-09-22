@@ -99,8 +99,6 @@
         document.getElementById('init_login').addEventListener('click', () => {
             const userId = document.getElementById('nameInputLogin').value.trim();
 
-            gtag('set', {'user_id': userId});
-
             const payload = {
                 event: 'login',
                 userId: userId
@@ -131,7 +129,6 @@
 
     <script>
         document.getElementById('logout').addEventListener('click', () => {
-            gtag('set', {'user_id': null});
 
             const payload = {
                 event: 'logout',
