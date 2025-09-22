@@ -131,7 +131,8 @@
 
     <script>
         document.getElementById('logout').addEventListener('click', () => {
-            gtag('set', {'user_id': null});
+            const userId = null
+            gtag('set', {'user_id': userId});
 
             const payload = {
                 event: 'logout',
