@@ -61,7 +61,7 @@
     <!-- End Altcraft Tag Manager-->
 
     <!-- Перехватчик ga4 -->
-    <!--<script src="ga4-forward.js"></script> -->
+    <script src="ga4-forward.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-messaging.js"></script>
@@ -108,9 +108,8 @@
 
             if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
                 //Отправляем в ga4
-                gtag('event', 'login');
-                // window.dataLayer = window.dataLayer || [];
-                // window.dataLayer.push(payload);
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
                 <!--TODO: Печать в консольку  -->
                 console.log("sent ga4", payload);
             }
@@ -140,9 +139,8 @@
 
             if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
                 //Отправляем в ga4
-                gtag('event', 'logout');
-                // window.dataLayer = window.dataLayer || [];
-                // window.dataLayer.push(payload);
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
                 <!--TODO: Печать в консольку  -->
                 console.log("sent ga4", payload);
             }
