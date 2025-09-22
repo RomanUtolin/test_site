@@ -91,6 +91,78 @@
         <input type="text" id="use_altcraft" value="0" placeholder="Отправлять в Altcraft? (1 или 0)">
     </div>
 
+    <!-- Кнопка Login -->
+    <label for="nameInput">userId: </label><input type="text" id="login" placeholder="userId">
+
+    <script>
+        document.getElementById('login').addEventListener('click', () => {
+            const userId = document.getElementById('nameInput').value.trim();
+
+            gtag('set', {'user_id': '12345'});
+
+            const payload = {
+                event: 'login',
+                userId: userId
+            }
+
+            if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
+                //Отправляем в ga4
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent ga4", payload);
+            }
+
+            if (parseInt(document.getElementById('use_altcraft').value.trim()) === 1) {
+                //Отправляем в altcraft
+                window.acDataLayer = window.acDataLayer || [];
+                window.acDataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent altcraft", payload);
+            }
+        });
+    </script>
+
+    <!-- Кнопка Logout -->
+    <button type="button" id="logout">Login</button>
+
+    <script>
+        document.getElementById('logout').addEventListener('click', () => {
+            gtag('set', {'user_id': null});
+
+            //Пересоздаём client_id. Так как был  logout
+            (function(){
+                function eraseCookie(name){
+                    document.cookie = name +
+                        '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT; domain=' + window.location.hostname + ';';
+                }
+                eraseCookie('_ga');
+                location.reload(); // чтобы GA4 сразу пересоздал client_id
+            })();
+
+            const payload = {
+                event: 'logout',
+            }
+
+            if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
+                //Отправляем в ga4
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent ga4", payload);
+            }
+
+            if (parseInt(document.getElementById('use_altcraft').value.trim()) === 1) {
+                //Отправляем в altcraft
+                window.acDataLayer = window.acDataLayer || [];
+                window.acDataLayer.push(payload);
+                <!--TODO: Печать в консольку  -->
+                console.log("sent altcraft", payload);
+            }
+        });
+    </script>
+
+
     <p>PUSH-уведомление:</p>
     <label for="nameInput">Имя: </label><input type="text" id="nameInput" placeholder="Имя">
 
