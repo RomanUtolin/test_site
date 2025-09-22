@@ -125,86 +125,13 @@
     </script>
 
     <div>
+        <!-- Кнопка Logout -->
         <button type="button" id="logout">logout</button>
     </div>
 
     <script>
-        // Помощник: получить список имён всех GA-кук (_ga и _ga_*)
-        function getGaCookieNames() {
-            return document.cookie
-                .split(';')
-                .map(c => c.trim().split('=')[0])
-                .filter(name => name === '_ga' || name.startsWith('_ga_'))
-                .filter((v, i, a) => a.indexOf(v) === i); // уникальные
-        }
-
-        // Помощник: список доменов для попыток удаления (от текущего хоста вверх)
-        function getDomainVariants() {
-            const host = location.hostname; // например, app.sub.example.co.uk или localhost
-            const parts = host.split('.');
-            const variants = [];
-
-            // Для localhost — только без domain
-            if (host === 'localhost' || /^[0-9.]+$/.test(host)) {
-                return ['__NO_DOMAIN__']; // маркер "без domain"
-            }
-
-            // Полный хост без ведущей точки
-            variants.push(host);
-            // Вариант с ведущей точкой
-            variants.push('.' + host);
-
-            // Родительские домены (eTLD+1 и т.д.)
-            for (let i = 1; i < parts.length - 1; i++) {
-                const parent = parts.slice(i).join('.');
-                variants.push(parent);
-                variants.push('.' + parent);
-            }
-
-            // Также попробуем удалить без domain вообще
-            variants.push('__NO_DOMAIN__');
-
-            // Уникальные
-            return Array.from(new Set(variants));
-        }
-
-        // Удаление одной куки по всем доменам и путям
-        function eraseCookieEverywhere(name) {
-            const domains = getDomainVariants();
-            const expires = 'Thu, 01 Jan 1970 00:00:01 GMT';
-
-            // Пробуем как минимум с path=/ и (на всякий случай) без указания path
-            const pathOptions = ['; Path=/', ''];
-
-            domains.forEach(d => {
-                pathOptions.forEach(pathOpt => {
-                    if (d === '__NO_DOMAIN__') {
-                        document.cookie = name + '=; Expires=' + expires + pathOpt + ';';
-                    } else {
-                        document.cookie = name + '=; Expires=' + expires + pathOpt + '; Domain=' + d + ';';
-                    }
-                });
-            });
-        }
-
-        // Полный logout-обработчик
-        document.getElementById('logout').addEventListener('click', function () {
-            // 1) Сбросить user_id для GA4 (если вы его задавали)
-            // Через gtag:
-            try {
-                gtag('set', {'user_id': null});
-            } catch (e) {
-                // gtag может быть ещё не инициализирован — не критично для удаления куки
-            }
-
-            // 2) Удалить ВСЕ GA-куки (_ga и _ga_*)
-            const gaCookies = getGaCookieNames();
-            if (gaCookies.length === 0) {
-                // даже если не нашли — попробуем удалить стандартные имена
-                ['_ga'].forEach(eraseCookieEverywhere);
-            } else {
-                gaCookies.forEach(eraseCookieEverywhere);
-            }
+        document.getElementById('logout').addEventListener('click', () => {
+            gtag('set', {'user_id': null});
 
             const payload = {
                 event: 'logout',
@@ -225,9 +152,17 @@
                 <!--TODO: Печать в консольку  -->
                 console.log("sent altcraft", payload);
             }
+        });
+    </script>
 
-            // 3) Перезагрузка — GA4 пересоздаст client_id, т.к. куки удалены
-            location.reload();
+    <div>
+        <!-- Кнопка reload -->
+        <button type="button" id="reload">reload</button>
+    </div>
+
+    <script>
+        document.getElementById('reload').addEventListener('click', () => {
+            location.reload(); // F5
         });
     </script>
 
