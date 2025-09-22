@@ -108,8 +108,9 @@
 
             if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
                 //Отправляем в ga4
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push(payload);
+                gtag('event', 'login');
+                // window.dataLayer = window.dataLayer || [];
+                // window.dataLayer.push(payload);
                 <!--TODO: Печать в консольку  -->
                 console.log("sent ga4", payload);
             }
@@ -131,8 +132,7 @@
 
     <script>
         document.getElementById('logout').addEventListener('click', () => {
-            const userId = null
-            // gtag('set', {'user_id': userId});
+            gtag('set', {'user_id': null});
 
             const payload = {
                 event: 'logout',
@@ -140,8 +140,9 @@
 
             if (parseInt(document.getElementById('use_ga4').value.trim()) === 1) {
                 //Отправляем в ga4
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push(payload);
+                gtag('event', 'logout');
+                // window.dataLayer = window.dataLayer || [];
+                // window.dataLayer.push(payload);
                 <!--TODO: Печать в консольку  -->
                 console.log("sent ga4", payload);
             }
