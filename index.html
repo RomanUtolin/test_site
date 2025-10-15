@@ -27,19 +27,28 @@
     <meta name="author" content="ROMAN TEST SITE">
 
     <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({
-            'gtm.start':
-                new Date().getTime(), event: 'gtm.js'
-        });
-        var f = d.getElementsByTagName(s)[0],
-            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-        j.async = true;
-        j.src =
-            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-        f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-P33K754W');</script>
+<!--    <script>(function (w, d, s, l, i) {-->
+<!--        w[l] = w[l] || [];-->
+<!--        w[l].push({-->
+<!--            'gtm.start':-->
+<!--                new Date().getTime(), event: 'gtm.js'-->
+<!--        });-->
+<!--        var f = d.getElementsByTagName(s)[0],-->
+<!--            j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';-->
+<!--        j.async = true;-->
+<!--        j.src =-->
+<!--            'https://www.googletagmanager.com/gtm.js?id=' + i + dl;-->
+<!--        f.parentNode.insertBefore(j, f);-->
+<!--    })(window, document, 'script', 'dataLayer', 'GTM-P33K754W');</script>-->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CH96LHXRZ0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CH96LHXRZ0');
+    </script>
     <!-- End Google Tag Manager -->
 
     <!-- Altcraft Tag Manager -->
@@ -57,9 +66,6 @@
                 firstScript.parentNode.insertBefore(script, firstScript);
             }
         }(window, document, 'acDataLayer', 'ATM-7cH7EhEqmgQH6KjWs'));
-        // Инициализируем dataLayer и gtag
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
     </script>
     <!-- End Altcraft Tag Manager-->
 
@@ -123,7 +129,7 @@
         document.getElementById('init_login').addEventListener('click', () => {
             const userId = document.getElementById('nameInputLogin').value.trim();
 
-            gtag('set', 'client_id', '1234.5678');
+            // gtag('set', 'client_id', '1234.5678');
             gtag('set', 'user_id', userId);
 
             const payload = {
