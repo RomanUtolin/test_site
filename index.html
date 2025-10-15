@@ -120,6 +120,9 @@
         document.getElementById('init_login').addEventListener('click', () => {
             const userId = document.getElementById('nameInputLogin').value.trim();
 
+            gtag('set', 'client_id', '1234.5678');
+            gtag('set', 'user_id', userId);
+
             const payload = {
                 event: 'login',
                 userId: userId
